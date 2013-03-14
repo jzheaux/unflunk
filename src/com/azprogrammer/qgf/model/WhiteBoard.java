@@ -1,6 +1,8 @@
 package com.azprogrammer.qgf.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
@@ -44,6 +46,22 @@ public class WhiteBoard
     protected String status = STATUS_ACTIVE;
     
     @Persistent Date creationDate;
+
+    @Persistent
+    private Set<String> worksheetList = new HashSet<String>();
+
+
+    public void addNewWorksheet(String worksheetKey) {
+        worksheetList.add(worksheetKey);
+    }
+
+    public Set<String> getWorksheetList() {
+        return worksheetList;
+    }
+
+    public void setWorksheetList(Set<String> worksheetList) {
+        this.worksheetList = worksheetList;
+    }
 
     /**
      * @return the key

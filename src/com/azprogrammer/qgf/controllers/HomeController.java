@@ -103,7 +103,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 public class HomeController
 {
 
-    static final char[] validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".toCharArray ();
+    static final char[] validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".toCharArray();
     protected InputValidator inputValidator;
     protected TextFormatter textFormatter;
 
@@ -144,7 +144,7 @@ public class HomeController
                 
                 long start = 0;
                 try{
-                    start = Long.parseLong (req.getParameter ("start"));                    
+                    start = Long.parseLong (req.getParameter ("start"));
                 }catch(Exception numE){}
                 
                 model.put ("user", user);

@@ -1,0 +1,26 @@
+# Eclipse project files
+.settings
+.classpath
+.project
+.metadata
+.mymetadata
+
+# IntelliJ Idea project files
+.idea
+.gradle
+*.iml
+*.ipr
+*.iws
+atlassian-ide-plugin.xml
+
+# Netbeans project files
+nbproject
+
+# Always ignore these directories/files
+target
+out
+logs
+temp
+test-output
+.DS_Store
+__MACOSX

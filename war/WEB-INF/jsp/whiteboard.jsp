@@ -34,6 +34,11 @@ var error = '${errorMsg}';
 
 <!--<script src="/js/azp/BBCodeEditor.js"></script>-->
 
+<!-- Call specific libs and styles -->
+<script src="/js/azp/adapter.js"></script>
+<script src="/js/azp/call-ext.js"></script>
+<link rel="stylesheet" href="/css/call.css">
+
 <style>
 #header{
 	font-size: 3em;
@@ -99,24 +104,50 @@ showButtons="false" style="width:500px;"></div><br> <button dojoType="dijit.form
 
 
 <div id="applicationArea" style="width: 100%; height: 100%; display: none; position: absolute; top: 0; bottom: 0;" dojoType="dijit.layout.BorderContainer" liveSplitters="true">
-	<div region="leading"  style="width: 40em; height: 100%" dojoType="dijit.layout.ContentPane" splitter="true">
-		<div id="chatArea" style="width: 100%; height: 100%" dojoType="dijit.layout.BorderContainer" liveSplitters="true">
-			
-			<div id="output" style="overflow: auto; width: 37em;" region="center" dojoType="dijit.layout.ContentPane" splitter="true">
-			</div>
-			<div style="width: 37em;" region="bottom" dojoType="dijit.layout.ContentPane" splitters="true">
-				<table border="0" cellspacing="5"><tr><td>
-				<textarea dojoType="azp.BBCodeEditor" cols="40" rows="3" id="chatText"></textarea> <span id="chatBtn" dojoType="dijit.form.Button">Say</span><span id="chatWaitMessage"></span>
-				
-				</td>
-				<td>
-				Users:<br>
-				<div style="width: 10em; overflow: auto;border: 1px solid #888888;" id="userListDiv"></div>
-				</td>				
-				</tr></table>
-			</div>
-		</div>
-	</div>
+    <div id="callArea" region="leading" style="width: 40em; height: 100%;" dojoType="dijit.layout.BorderContainer" liveSplitters="true">
+        <div region="top"  style="width: 40em; height: 50%" dojoType="dijit.layout.ContentPane" splitter="true">
+            <div style="width: 100%; height: 100%" dojoType="dijit.layout.BorderContainer" liveSplitters="true">
+                <div id="call" style="overflow: auto; width: 37em;" region="center" dojoType="dijit.layout.ContentPane" splitter="true" ondblclick="enterFullScreen()">
+                    <div id="card">
+                        <%--<span id="callBtn" dojoType="dijit.form.Button" onclick="call()">Call</span>--%>
+                        <div id="local">
+                            <video width="100%" height="100%" id="localVideo" autoplay="autoplay" muted="true"/>
+                        </div>
+                        <div id="remote">
+                            <video width="100%" height="100%" id="remoteVideo" autoplay="autoplay">
+                            </video>
+                            <div id="mini">
+                                <video width="100%" height="100%" id="miniVideo" autoplay="autoplay" muted="true"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="toolbar" style="overflow: auto; width: 37em;" region="top" dojoType="dijit.layout.ContentPane" splitter="true" ondblclick="enterFullScreen()">
+            <span id="callBtn" dojoType="dijit.form.Button" onclick="answer('${wbId}')">Call</span><span id="callWaitMessage"></span>
+        </div>
+        <div region="center"  style="width: 40em; height: 50%" dojoType="dijit.layout.ContentPane" splitter="true">
+            <div id="chatArea" style="width: 100%; height: 100%" dojoType="dijit.layout.BorderContainer" liveSplitters="true">
+
+                <div id="output" style="overflow: auto; width: 37em;" region="center" dojoType="dijit.layout.ContentPane" splitter="true">
+                </div>
+                <div style="width: 37em;" region="bottom" dojoType="dijit.layout.ContentPane" splitters="true">
+                    <table border="0" cellspacing="5">
+                    <tr><td>
+                        <textarea dojoType="azp.BBCodeEditor" cols="40" rows="3" id="chatText"></textarea>
+                        <span id="chatBtn" dojoType="dijit.form.Button">Say</span><span id="chatWaitMessage"></span>
+                    </td>
+                    <td>
+                    Users:<br>
+                    <div style="width: 10em; overflow: auto;border: 1px solid #888888;" id="userListDiv"></div>
+                    </td>
+                    </tr></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <div region="center" dojoType="dijit.layout.ContentPane"  splitter="true">
 	draw: 

@@ -10,7 +10,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
-
+import com.google.appengine.repackaged.org.codehaus.jackson.annotate.JsonIgnore;
 
 
 /**
@@ -40,6 +40,9 @@ public class WBMessage
     
     @Persistent
     protected Key wbKey;
+
+    @Persistent
+    private String worksheetId;
     
     
     protected Set <String> userList;
@@ -107,6 +110,7 @@ public class WBMessage
     /**
      * @param userList the userList to set
      */
+    @JsonIgnore
     public void setUserList (Set <String> userList)
     {
         this.userList = userList;
@@ -117,6 +121,7 @@ public class WBMessage
     /**
      * @return the key
      */
+    @JsonIgnore
     public Key getKey ()
     {
         return key;
@@ -133,6 +138,7 @@ public class WBMessage
     /**
      * @return the wbKey
      */
+    @JsonIgnore
     public Key getWbKey ()
     {
         return wbKey;
@@ -161,6 +167,13 @@ public class WBMessage
     {
         this.creationTime = creationTime;
     }
-    
-    
+
+
+    public String getWorksheetId() {
+        return worksheetId;
+    }
+
+    public void setWorksheetId(String worksheetId) {
+        this.worksheetId = worksheetId;
+    }
 }
