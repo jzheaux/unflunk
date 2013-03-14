@@ -14,4 +14,10 @@
         <property name="time" direction="asc"/>
     </datastore-index>
 
+    <datastore-index kind="Workspace" ancestor="false" source="auto">
+        <property name="user" direction="asc"/>
+        <property name="creationDate" direction="desc"/>
+    </datastore-index>
+
+
 </datastore-indexes>

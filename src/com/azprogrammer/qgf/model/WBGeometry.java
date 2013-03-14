@@ -10,6 +10,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
+import com.google.appengine.repackaged.org.codehaus.jackson.annotate.JsonIgnore;
 
 
 /**
@@ -129,6 +130,7 @@ public class WBGeometry  implements Serializable
     /**
      * @return the shapeId
      */
+    @JsonIgnore
     public int getShapeId ()
     {
         return shapeId;
